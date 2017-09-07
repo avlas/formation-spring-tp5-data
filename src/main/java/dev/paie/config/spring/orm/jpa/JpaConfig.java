@@ -32,7 +32,7 @@ public class JpaConfig {
 	public EntityManagerFactory entityManagerFactory(DataSource dataSource) {
 		
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-	//	vendorAdapter.setGenerateDdl(true);
+		vendorAdapter.setGenerateDdl(true);
 		vendorAdapter.setShowSql(true);							// activer les logs SQL
 		
 		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
@@ -41,9 +41,9 @@ public class JpaConfig {
 		factory.setPackagesToScan("dev.paie.entite");
 		factory.setDataSource(dataSource);
 		
-		Properties jpaProperties = new Properties();
-		jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
-		factory.setJpaProperties(jpaProperties);
+//		Properties jpaProperties = new Properties();
+//		jpaProperties.setProperty("javax.persistence.schema-generation.database.action", "drop-and-create");
+//		factory.setJpaProperties(jpaProperties);
 		
 		factory.afterPropertiesSet();
 		return factory.getObject();

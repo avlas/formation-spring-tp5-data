@@ -57,7 +57,11 @@ public class GradeServiceJdbcTemplate implements GradeService {
 
 	@Override
 	public void truncateTable() {
-		String sql= "TRUNCATE TABLE grade";
+		
+//		String sqlTableExistence = "SELECT table_name FROM information_schema.tables WHERE table_schema = \'spring-jdbc-sirh-paie\' AND table_name = \'grade\' ";
+//		this.jdbcTemplate.execute(sqlTableExistence);
+				
+		String sql= "TRUNCATE TABLE IF EXISTS grade";
 		this.jdbcTemplate.update(sql);
 	}
 }
